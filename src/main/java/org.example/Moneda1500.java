@@ -1,4 +1,4 @@
-package main.java.org.example;
+package org.example;
 
 public class Moneda1500 extends Moneda {
     public Moneda1500() {

@@ -1,4 +1,4 @@
-package main.java.org.example;
+package org.example;
 
 public abstract class Dulce extends Producto {
     private int numSerie;
