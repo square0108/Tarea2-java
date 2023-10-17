@@ -18,12 +18,16 @@ public class Expendedor {
         this.monVu = new Deposito<>();
 
         /* Se rellenan todos los depositos con la misma cantidad de stock. */
-        for (int i = 1; i <= stock; i++) {
-            coca.add(new CocaCola(1000 + i));
-            sprite.add(new Sprite(2000 + i));
-            fanta.add(new Fanta(3000 + i));
-            snickers.add(new Snickers(4000 + i));
-            super8.add(new Super8(5000 + i));
+        /*GLLRM: En caso de que el stock sea menor o igual a cero, simplemente no se añade nada a los
+        * depositos ¿verdad?*/
+        if (stock>0){
+            for (int i = 1; i <= stock; i++) {
+                coca.add(new CocaCola(1000 + i));
+                sprite.add(new Sprite(2000 + i));
+                fanta.add(new Fanta(3000 + i));
+                snickers.add(new Snickers(4000 + i));
+                super8.add(new Super8(5000 + i));
+            }
         }
     }
 
@@ -46,11 +50,19 @@ public class Expendedor {
                 if (moneda.getValor() >= Main.Catalogo.values()[i].precio)
                     Compra = Main.Catalogo.values()[i]; /* Chequea: El pago es suficiente? */
                 else {
-                    throw new PagoInsuficienteException();
+                    throw new PagoInsuficienteException(this, moneda);
                 }
             }
         }
         if (Compra == null) throw new NoHayProductoException(this, moneda);
+
+        // GLLRM: Generar monedas segun monto de vuelto y añadirlas al deposito de vuelto
+        int montovuelto = moneda.getValor() - Compra.precio;
+        while( montovuelto > 0 ){
+            montovuelto -= 100;
+            Moneda100 moneda100 = new Moneda100();
+            monVu.add(moneda100);
+        }
 
         switch (Compra) { /* TODO: Implementar Throw PagoInsuficienteException */
             case COCA:
@@ -68,6 +80,12 @@ public class Expendedor {
         }
     }
 
+    /**
+     * @return Moneda recogida por usuario desde deposito de vuelto
+     */
+    public Moneda getVuelto(){return monVu.get();}
+
+    //Getters de Depositos
     public Deposito<Producto> getCoca() {
         return coca;
     }
