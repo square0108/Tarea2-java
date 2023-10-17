@@ -12,6 +12,10 @@ public class Deposito<T> {
         this.array.add(object);
     }
     public T get() {
-        return this.array.remove(0);
+        if (!array.isEmpty()){
+            return this.array.remove(0);
+        } else {
+            return null;
+        }
     }
 }
