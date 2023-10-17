@@ -1,11 +1,10 @@
 package main.java.org.example;
 
 public class PagoInsuficienteException extends Exception {
-    private final Expendedor expendedor; // Solo para testear.
     public PagoInsuficienteException(Expendedor expendedorFail, Moneda monedaFail) {
-        this.expendedor = expendedorFail;
+        /*Creo que no tiene sentido que desde acá se quite la moneda del deposito, esto
+        lo deberia hacer el comprador*/
         expendedorFail.getMonVu().add(monedaFail);
-        System.out.println("Excepcion ocurrida. Hay vuelto en el expendedor: " + getVueltoExpendedor().toString());
+        System.err.println("PAGO INSUFICIENTE");
     }
-    public Moneda getVueltoExpendedor() {return expendedor.getMonVu().get();}
 }
