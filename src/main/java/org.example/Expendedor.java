@@ -9,6 +9,10 @@ public class Expendedor {
     private Deposito<Producto> super8;
     private Deposito<Moneda> monVu;
 
+    /**
+     * Metodo constructor de Expendedor. Genera un stock dentro de los depositos de Expendedor.
+     * @param stock Cantidad de productos en Expendedor (el mismo número para todos).
+     */
     public Expendedor(int stock) {
         this.coca = new Deposito<>();
         this.sprite = new Deposito<>();
@@ -31,6 +35,15 @@ public class Expendedor {
         }
     }
 
+    /**
+     * Emula la acción de comprar en el Expendedor. Utilizado unicamente por comprador.
+     * @param ID Identificador de Producto.
+     * @param moneda Moneda usada por Comprador.
+     * @return Si el producto es comprado de forma exitosa, la referencia del producto. En otro caso null.
+     * @throws NoHayProductoException TODO: Rellenar las excepciónes
+     * @throws PagoIncorrectoException
+     * @throws PagoInsuficienteException
+     */
     public Producto comprarProducto(int ID, Moneda moneda) throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException {
         /* Antes de ejecutar cualquier paso, se revisa que la moneda sea valida (no null). */
 
@@ -85,7 +98,7 @@ public class Expendedor {
      */
     public Moneda getVuelto(){return monVu.get();}
 
-    //Getters de Depositos
+    /*Getters de Depositos*/
     public Deposito<Producto> getCoca() {
         return coca;
     }
