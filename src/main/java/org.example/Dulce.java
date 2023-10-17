@@ -1,10 +1,8 @@
 package main.java.org.example;
 
 public abstract class Dulce extends Producto {
-    private int numSerie;
     public Dulce(int serie) {
-        this.numSerie = serie;
+        super(serie);
     }
-    public abstract String comer();
-    public int getNumSerie() {return numSerie;}
+    public abstract String consumir();
 }

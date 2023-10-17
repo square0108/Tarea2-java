@@ -46,7 +46,7 @@ public class Expendedor {
                 if (moneda.getValor() >= Main.Catalogo.values()[i].precio)
                     Compra = Main.Catalogo.values()[i]; /* Chequea: El pago es suficiente? */
                 else {
-                    throw new PagoInsuficienteException();
+                    throw new PagoInsuficienteException(this, moneda);
                 }
             }
         }

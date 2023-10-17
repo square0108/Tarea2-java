@@ -5,7 +5,7 @@ public class NoHayProductoException extends Exception {
     public NoHayProductoException(Expendedor expendedorFail, Moneda monedaFail) {
         this.expendedor = expendedorFail;
         expendedorFail.getMonVu().add(monedaFail);
-        System.out.println("Vuelto de excepcion: " + getVueltoExpendedor().toString());
+        System.out.println("Excepcion ocurrida. Hay vuelto en el expendedor: " + getVueltoExpendedor().toString());
     }
     public Moneda getVueltoExpendedor() {return expendedor.getMonVu().get();}
 }

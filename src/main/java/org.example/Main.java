@@ -21,7 +21,7 @@ public class Main {
         try {
             Expendedor Maquina = new Expendedor(3);
             Moneda500 CincoCienPeso = new Moneda500();
-            Comprador Pepito = new Comprador(Maquina, 999, CincoCienPeso);
+            Comprador Pepito = new Comprador(Maquina, 0, CincoCienPeso);
 
             System.out.println("\nNo hubieron excepciones... por ahora.");
         }
