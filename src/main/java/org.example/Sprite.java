@@ -1,4 +1,4 @@
-package main.java.org.example;
+package org.example;
 
 public class Sprite extends Bebida {
     public Sprite(int serie) {
