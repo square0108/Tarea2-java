@@ -5,6 +5,15 @@ public class Comprador {
     private String sabor;
     private int vuelto;
 
+    /**
+     * Metodo constructor de Comprador, en este se intenta comprar con una moneda un producto en un expendedor.
+     * @param expendedor Expendedor donde se comprara el producto.
+     * @param producto ID del producto a comprar.
+     * @param moneda Moneda con la que se comprara el producto.
+     * @throws NoHayProductoException /TODO: Rellenar esto
+     * @throws PagoInsuficienteException
+     * @throws PagoIncorrectoException
+     */
     public Comprador(Expendedor expendedor, int producto, Moneda moneda) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         this.vuelto = 0;
         /*No estoy completamente seguro de que los errores tengas que manejarse de esta forma*/
@@ -32,6 +41,14 @@ public class Comprador {
         }
 
     }
+
+    /**
+     * @return Cantidad de vuelto que posee el comprador (int).
+     */
     public int cuantoVuelto(){return this.vuelto;}
+
+    /**
+     * @return "Sonido" que hace el producto al ser consumido (String).
+     */
     public String getSabor(){return this.sabor;}
 }
