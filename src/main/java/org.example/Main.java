@@ -18,6 +18,15 @@ public class Main {
     }
 
     public static void main(String[] args){
-        System.out.println();
+        try {
+            Expendedor Maquina = new Expendedor(3);
+            Moneda500 CincoCienPeso = new Moneda500();
+            Comprador Pepito = new Comprador(Maquina, 999, CincoCienPeso);
+
+            System.out.println("\nNo hubieron excepciones... por ahora.");
+        }
+        catch (Exception NoHayProductoException) {
+            System.out.println("Error. No hay stock o el producto ingresado no existe. Retire su vuelto desde la maquina.");
+        }
     }
 }
