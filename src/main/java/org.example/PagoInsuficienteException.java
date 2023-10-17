@@ -1,4 +1,4 @@
-package main.java.org.example;
+package org.example;
 
 public class PagoInsuficienteException extends Exception {
     public PagoInsuficienteException(Expendedor expendedorFail, Moneda monedaFail) {

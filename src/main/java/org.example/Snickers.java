@@ -1,4 +1,4 @@
-package main.java.org.example;
+package org.example;
 
 public class Snickers extends Dulce{
     public Snickers(int serie) {
