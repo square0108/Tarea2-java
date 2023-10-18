@@ -10,9 +10,9 @@ public class Comprador {
      * @param expendedor Expendedor donde se comprara el producto.
      * @param producto ID del producto a comprar.
      * @param moneda Moneda con la que se comprara el producto.
-     * @throws NoHayProductoException /TODO: Rellenar esto
-     * @throws PagoInsuficienteException
-     * @throws PagoIncorrectoException
+     * @throws NoHayProductoException Ocurre en caso de stock agotado o de que se ingrese un ID de producto invalido.
+     * @throws PagoIncorrectoException Ocurre en caso de que se intente realizar un pago con moneda de referencia null.
+     * @throws PagoInsuficienteException Ocurre en caso de que el valor de la moneda ingresada sea menor al precio del producto.
      */
     public Comprador(Expendedor expendedor, int producto, Moneda moneda) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         this.vuelto = 0;

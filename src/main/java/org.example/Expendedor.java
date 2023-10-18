@@ -10,8 +10,8 @@ public class Expendedor {
     private Deposito<Moneda> monVu;
 
     /**
-     * Metodo constructor de Expendedor. Genera un stock dentro de los depositos de Expendedor.
-     * @param stock Cantidad de productos en Expendedor (el mismo número para todos).
+     * Metodo constructor de Expendedor. Genera un stock dentro de los depositos de Productos de Expendedor.
+     * @param stock Cantidad de productos en cada deposito de Expendedor (el mismo número para todos).
      */
     public Expendedor(int stock) {
         this.coca = new Deposito<>();
@@ -24,6 +24,7 @@ public class Expendedor {
         /* Se rellenan todos los depositos con la misma cantidad de stock. */
         /*GLLRM: En caso de que el stock sea menor o igual a cero, simplemente no se añade nada a los
         * depositos ¿verdad?*/
+        /* SQUARE: Si, en realidad el if (stock>0) no seria necesario porque en caso contrario aunque no estuviese el If, no se ejecutaria el for. */
         if (stock>0){
             for (int i = 1; i <= stock; i++) {
                 coca.add(new CocaCola(1000 + i));
@@ -36,13 +37,13 @@ public class Expendedor {
     }
 
     /**
-     * Emula la acción de comprar en el Expendedor. Utilizado unicamente por comprador.
-     * @param ID Identificador de Producto.
+     * Emula la acción de comprar en el Expendedor. Utilizado unicamente por el constructor de Comprador.
+     * @param ID int, Identificador de Producto.
      * @param moneda Moneda usada por Comprador.
      * @return Si el producto es comprado de forma exitosa, la referencia del producto. En otro caso null.
-     * @throws NoHayProductoException TODO: Rellenar las excepciónes
-     * @throws PagoIncorrectoException
-     * @throws PagoInsuficienteException
+     * @throws NoHayProductoException Ocurre en caso de stock agotado o de que se ingrese un ID de producto invalido.
+     * @throws PagoIncorrectoException Ocurre en caso de que se intente realizar un pago con moneda de referencia null.
+     * @throws PagoInsuficienteException Ocurre en caso de que el valor de la moneda ingresada sea menor al precio del producto.
      */
     public Producto comprarProducto(int ID, Moneda moneda) throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException {
         /* Antes de ejecutar cualquier paso, se revisa que la moneda sea valida (no null). */
