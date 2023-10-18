@@ -4,5 +4,5 @@ public class Fanta extends Bebida {
     public Fanta(int serie) {
         super(serie);
     }
-    public String beber() {return this.toString();}
+    public String consumir() {return "Fanta";}
 }

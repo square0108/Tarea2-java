@@ -4,5 +4,5 @@ public class Sprite extends Bebida {
     public Sprite(int serie) {
         super(serie);
     }
-    public String beber() {return this.toString();}
+    public String consumir() {return "Sprite";}
 }
