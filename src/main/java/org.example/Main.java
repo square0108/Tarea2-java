@@ -32,7 +32,7 @@ public class Main {
             System.out.println("Nueva compra: " + Pepito.getSabor() + ", Vuelto: " + Pepito.cuantoVuelto());
             Pepito = new Comprador(Maquina, Catalogo.SUPER8.id, new Moneda1000());
             System.out.println("Nueva compra: " + Pepito.getSabor() + ", Vuelto: " + Pepito.cuantoVuelto());
-            Pepito = new Comprador(Maquina, Catalogo.COCA.id, new Moneda100());
+            Pepito = new Comprador(Maquina, Catalogo.SPRITE.id, new Moneda100());
             System.out.println("Nueva compra: " + Pepito.getSabor() + ", Vuelto: " + Pepito.cuantoVuelto());
 
             System.out.println("\nNo hubieron excepciones... por ahora.");
