@@ -50,13 +50,13 @@ public class Expendedor {
         if (moneda == null) throw new PagoIncorrectoException();
 
         /* Se crea la siguiente variable para verificar dos cosas: Que el ID ingresado sea valido, y que el pago ingresado sea suficiente. */
-        Main.Catalogo Compra = null;
+        Catalogo Compra = null;
 
         /* Se recorre el array Main.Catalogo.values(), que contiene todas las constantes de Catalogo, las cuales almacenan los IDs y los precios. */
-        for (int i = 0; i < Main.Catalogo.values().length; i++) {
-            if (Main.Catalogo.values()[i].id == ID) { /* Chequea: ID es valido? */
-                if (moneda.getValor() >= Main.Catalogo.values()[i].precio)
-                    Compra = Main.Catalogo.values()[i]; /* Chequea: El pago es suficiente? */
+        for (int i = 0; i < Catalogo.values().length; i++) {
+            if (Catalogo.values()[i].id == ID) { /* Chequea: ID es valido? */
+                if (moneda.getValor() >= Catalogo.values()[i].precio)
+                    Compra = Catalogo.values()[i]; /* Chequea: El pago es suficiente? */
                 else {
                     throw new PagoInsuficienteException(this, moneda);
                 }
