@@ -30,7 +30,7 @@ class ExpendedorTest {
     }
 
     @Test
-    @DisplayName("Caso No Hay Producto")
+    @DisplayName("Comprar: Caso No Hay Producto")
     void noHayProducto() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         /*Nose como poder utilizar el enum catalogo aquí dentro*/
         Expendedor expendedor = new Expendedor(1);
@@ -41,16 +41,35 @@ class ExpendedorTest {
     }
 
     @Test
-    @DisplayName("Caso Pago Insuficiente")
+    @DisplayName("Comprar: Caso Pago Insuficiente")
     void pagoInsuficiente() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         /*Nose como poder utilizar el enum catalogo aquí dentro*/
         Expendedor expendedor = new Expendedor(10);
+        assertThrows(PagoInsuficienteException.class, () -> {
+            expendedor.comprarProducto(3,new Moneda100());
+        });
     }
 
     @Test
-    @DisplayName("Caso Pago Incorrecto")
+    @DisplayName("Comprar: Caso Pago Incorrecto")
     void pagoIncorrecto() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         /*Nose como poder utilizar el enum catalogo aquí dentro*/
         Expendedor expendedor = new Expendedor(10);
+        assertThrows(PagoIncorrectoException.class, () -> {
+            expendedor.comprarProducto(1,null);
+        });
+    }
+
+    @Test
+    @DisplayName("Método getVuelto")
+    void casoGetVuelto() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
+        /*Nose como poder utilizar el enum cátalogo aquí dentro*/
+        Expendedor expendedor = new Expendedor(10);
+        expendedor.getMonVu().add(new Moneda100());
+        expendedor.getMonVu().add(new Moneda100());
+        assertNotNull(expendedor.getVuelto());
+        assertNotNull(expendedor.getVuelto());
+        assertNull(expendedor.getVuelto());
+        assertNull(expendedor.getVuelto());
     }
 }
