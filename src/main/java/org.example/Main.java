@@ -5,8 +5,8 @@ public class Main {
         COCA(0,100),
         SPRITE(1,200),
         FANTA(2,300),
-        SNICKERS(4,600),
-        SUPER8(5,700);
+        SNICKERS(3,600),
+        SUPER8(4,700);
         public final int id;
         public final int precio;
 
