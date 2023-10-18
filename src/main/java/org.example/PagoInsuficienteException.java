@@ -1,10 +1,13 @@
 package org.example;
 
 public class PagoInsuficienteException extends Exception {
+    /**
+     * Ocurre cuando el valor de la moneda utilizada para la compra es menor al precio del producto deseado.
+     * Se ingresa la moneda de Comprador al deposito de vueltos del expendedor.
+     * @param expendedorFail Expendedor donde la compra ha fallado
+     * @param monedaFail Moneda cuyo valor fue insuficiente
+     */
     public PagoInsuficienteException(Expendedor expendedorFail, Moneda monedaFail) {
-        /*Creo que no tiene sentido que desde acá se quite la moneda del deposito, esto
-        lo deberia hacer el comprador*/
         expendedorFail.getMonVu().add(monedaFail);
-        System.err.println("PAGO INSUFICIENTE");
     }
 }
