@@ -46,18 +46,12 @@ public class Expendedor {
      */
     public Producto comprarProducto(int ID, Moneda moneda) throws NoHayProductoException, PagoIncorrectoException, PagoInsuficienteException {
         /* Antes de ejecutar cualquier paso, se revisa que la moneda sea valida (no null). */
-
         if (moneda == null) throw new PagoIncorrectoException();
 
-        /* Main.Catalogo.values() es un arreglo que contiene todas las constantes del enum Catalogo.
-        *  Compra es el producto que ha sido seleccionado por el cliente, si es que se ha ingresado un ID valido. */
-
+        /* Se crea la siguiente variable para verificar dos cosas: Que el ID ingresado sea valido, y que el pago ingresado sea suficiente. */
         Main.Catalogo Compra = null;
 
-        /* Se busca si el ID ingresado es valido. */
-        /* TODO: Implementar Throw PagoIncorrectoException cuando el ID ingresado es invalido!!! */
-        /* TODO: Implementar Throw NoHayProductoException */
-
+        /* Se recorre el array Main.Catalogo.values(), que contiene todas las constantes de Catalogo, las cuales almacenan los IDs y los precios. */
         for (int i = 0; i < Main.Catalogo.values().length; i++) {
             if (Main.Catalogo.values()[i].id == ID) { /* Chequea: ID es valido? */
                 if (moneda.getValor() >= Main.Catalogo.values()[i].precio)
@@ -67,6 +61,7 @@ public class Expendedor {
                 }
             }
         }
+        /* Si Compra permanece inicializada como NULL, entonces el ID ingresado no es valido. */
         if (Compra == null) throw new NoHayProductoException(this, moneda);
 
         // GLLRM: Generar monedas segun monto de vuelto y añadirlas al deposito de vuelto
@@ -77,17 +72,30 @@ public class Expendedor {
             monVu.add(moneda100);
         }
 
-        switch (Compra) { /* TODO: Implementar Throw PagoInsuficienteException */
+        /* Primero se crea ProductoComprado.
+        * Si al hacer get() desde un deposito se le asigna null a ProductoComprado, es porque este deposito ha quedado vacio. */
+        Producto ProductoComprado;
+        switch (Compra) {
             case COCA:
-                return coca.get();
+                ProductoComprado = coca.get();
+                if (ProductoComprado == null) throw new NoHayProductoException(this, moneda);
+                else return ProductoComprado;
             case SPRITE:
-                return sprite.get();
+                ProductoComprado = sprite.get();
+                if (ProductoComprado == null) throw new NoHayProductoException(this, moneda);
+                else return ProductoComprado;
             case FANTA:
-                return fanta.get();
+                ProductoComprado = fanta.get();
+                if (ProductoComprado == null) throw new NoHayProductoException(this, moneda);
+                else return ProductoComprado;
             case SNICKERS:
-                return snickers.get();
+                ProductoComprado = snickers.get();
+                if (ProductoComprado == null) throw new NoHayProductoException(this, moneda);
+                else return ProductoComprado;
             case SUPER8:
-                return super8.get();
+                ProductoComprado = super8.get();
+                if (ProductoComprado == null) throw new NoHayProductoException(this, moneda);
+                else return ProductoComprado;
             default:
                 return null;
         }

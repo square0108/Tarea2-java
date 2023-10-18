@@ -20,7 +20,7 @@ public class Comprador {
 
         try{
             Producto miCompra = expendedor.comprarProducto(producto, moneda);
-            sabor = miCompra.toString(); // NO estoy seguro de que así se obtenga el "sabor"
+            sabor = miCompra.consumir(); // NO estoy seguro de que así se obtenga el "sabor"
 
             // Quitar el vuelto del deposito monVu, hasta que quede vacio
             Moneda monedavuelto = expendedor.getVuelto();
@@ -37,6 +37,7 @@ public class Comprador {
             * moneda en el deposito monVu, por eso cliente recibe la moneda y directamente su vuelto es la
             * totalidad de lo que pago*/
             this.vuelto = expendedor.getVuelto().getValor();
+            System.out.println("La Moneda de " + this.toString() + " ha sido rechazada: " + cuantoVuelto());
             throw e;
         }
 
