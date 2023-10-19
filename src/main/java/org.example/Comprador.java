@@ -39,7 +39,7 @@ public class Comprador {
             * moneda en el deposito monVu, por eso cliente recibe la moneda y directamente su vuelto es la
             * totalidad de lo que pago*/
             this.vuelto = expendedor.getVuelto().getValor();
-            System.out.println("La Moneda de " + this.toString() + " ha sido rechazada: " + cuantoVuelto());
+            System.err.println("La Moneda de " + this.toString() + " ha sido rechazada. Valor de la moneda: " + cuantoVuelto());
             throw e;
         }
 
