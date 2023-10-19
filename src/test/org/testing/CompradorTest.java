@@ -1,9 +1,10 @@
 package org.testing;
 
 import org.example.*;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.concurrent.atomic.AtomicReference;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,6 +27,9 @@ class CompradorTest {
     @Test
     @DisplayName("Placeholder")
     void CompradorExpVacio() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
-        Comprador Epep = new Comprador(expEmpty, Catalogo.FANTA.id, new Moneda500());
+        AtomicReference<Comprador> Epep = null;
+        assertThrows(NoHayProductoException.class, () -> {
+            Epep.set(new Comprador(expEmpty, Catalogo.FANTA.id, new Moneda500()));
+        });
     }
 }
