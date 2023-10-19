@@ -1,4 +1,6 @@
 # Tarea2-java
-### Integrantes:
-- [] Martin Ignacio Andres Llanos Fariña.
--  [2022429887] Guillermo Ignacio Oliva Orellana.
+### Integrantes
+- Martin Ignacio Andres Llanos Fariña.
+- Guillermo Ignacio Oliva Orellana.
+### UML
+![Alt text](Imagen_UML.png)

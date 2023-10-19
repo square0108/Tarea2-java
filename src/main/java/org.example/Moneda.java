@@ -9,7 +9,15 @@ package org.example;
  */
 public abstract class Moneda implements Comparable<Moneda>{
     public Moneda(){}
+
+    /**
+     * @return int, Valor de la moneda.
+     */
     public abstract int getValor();
+
+    /**
+     * @return Moneda, referencia a la moneda.
+     */
     public abstract Moneda getSerie();
     public abstract String toString();
     public int compareTo(Moneda o){
