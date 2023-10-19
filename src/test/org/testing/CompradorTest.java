@@ -32,4 +32,36 @@ class CompradorTest {
             Epep.set(new Comprador(expEmpty, Catalogo.FANTA.id, new Moneda500()));
         });
     }
+
+    @Test
+    @DisplayName("A comprador no le alcanza el dinero")
+    void compradorNoAlcanza() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
+        Expendedor expendedor = new Expendedor(10);
+        assertThrows(PagoInsuficienteException.class, () -> {
+            Comprador comprador = new Comprador(expendedor, Catalogo.SUPER8.id, new Moneda100());
+        });
+    }
+
+    @Test
+    @DisplayName("Comprador intenta comprar con null")
+    void compradorCompraNull() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
+        Expendedor expendedor = new Expendedor(10);
+        assertThrows(PagoIncorrectoException.class, () -> {
+            Comprador comprador = new Comprador(expendedor, Catalogo.SUPER8.id, null);
+        });
+    }
+
+    @Test
+    @DisplayName("Comprador intenta comprar sin existencias")
+    void compradorCompraSinExistencias() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
+        Expendedor expendedorvacio = new Expendedor(0);
+        assertThrows(NoHayProductoException.class, () -> {
+            Comprador comprador = new Comprador(expendedorvacio, Catalogo.SUPER8.id, new Moneda1500());
+        });
+
+        Expendedor expendedorlleno = new Expendedor(100);
+        assertThrows(NoHayProductoException.class, () -> {
+            Comprador comprador1 = new Comprador(expendedorlleno, 999, new Moneda1500());
+        });
+    }
 }
