@@ -55,6 +55,7 @@ public class Expendedor {
         /* Se recorre el array Main.Catalogo.values(), que contiene todas las constantes de Catalogo, las cuales almacenan los IDs y los precios. */
         for (int i = 0; i < Catalogo.values().length; i++) {
             if (Catalogo.values()[i].id == ID) { /* Chequea: ID es valido? */
+                Compra = Catalogo.values()[i];
                 if (moneda.getValor() >= Catalogo.values()[i].precio) { /* Chequea: El pago es suficiente? */
                     Compra = Catalogo.values()[i];
             }

@@ -1,4 +1,4 @@
-package java.testsMain;
+package org.testing;
 
 import org.example.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -46,7 +46,7 @@ class MonedaTest {
     }
     @Test
     @DisplayName("Metodo getSerie devuelve Referencia")
-    void monedagetSerie() {
+    void monedaGetSerie() {
         assertNotNull(new Moneda100().getSerie());
         assertNotNull(new Moneda500().getSerie());
         assertNotNull(new Moneda1000().getSerie());
@@ -54,7 +54,7 @@ class MonedaTest {
     }
     @Test
     @DisplayName("Metodo toString funciona de forma correcta")
-    void monedatoString() {
+    void monedaToString() {
         assertEquals("Moneda de 100",new Moneda100().toString());
         assertEquals("Moneda de 500",new Moneda500().toString());
         assertEquals("Moneda de 1000",new Moneda1000().toString());

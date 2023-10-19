@@ -1,4 +1,4 @@
-package java.testsMain;
+package org.testing;
 
 import org.example.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,9 +8,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ExpendedorTest {
+
     @BeforeEach
     void beforeEach(){
+
     }
+
     @Test
     @DisplayName("Creación de Expendedores")
     void creacionExpendedores(){
