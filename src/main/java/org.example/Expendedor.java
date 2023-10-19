@@ -1,6 +1,9 @@
 package org.example;
 import java.util.ArrayList;
-
+/**
+ * Una clase que Simula el comportamiento de un Expendedor. <code>Comprador</code> Interactua con esta.
+ * @see Comprador
+ */
 public class Expendedor {
     private Deposito<Producto> coca;
     private Deposito<Producto> sprite;

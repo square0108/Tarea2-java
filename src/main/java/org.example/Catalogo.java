@@ -1,5 +1,9 @@
 package org.example;
 
+/**
+ * Enumerador que describe los productos que posee <code>Expendedor</code>
+ * @see Expendedor
+ */
 public enum Catalogo {
     COCA(0, 100),
     SPRITE(1, 200),

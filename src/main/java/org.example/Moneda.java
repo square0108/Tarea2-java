@@ -1,5 +1,12 @@
 package org.example;
 
+/**
+ * Clase abstracta Moneda.
+ * @see Moneda100
+ * @see Moneda500
+ * @see Moneda1000
+ * @see Moneda1500
+ */
 public abstract class Moneda implements Comparable<Moneda>{
     public Moneda(){}
     public abstract int getValor();
