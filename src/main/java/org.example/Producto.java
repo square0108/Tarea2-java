@@ -1,5 +1,9 @@
 package org.example;
-
+/**
+ * Clase abstracta que entrega las funcionalidades de un Producto.
+ * @see Bebida
+ * @see Dulce
+ */
 public abstract class Producto {
     private final int numSerie;
 

@@ -1,6 +1,11 @@
 package org.example;
 import java.util.ArrayList;
 
+/**
+ * Clase que simula el comportamiento de un deposito.
+ * @param <T> Puede ser utilizada para todo tipo de objeto, pero esta pensada para almacenar:
+ *           Monedas y Productos.
+ */
 public class Deposito<T> {
     private final ArrayList<T> array;
     public Deposito() {

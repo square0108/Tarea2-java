@@ -1,6 +1,9 @@
 package org.example;
 
-
+/**
+ * Una clase que entrega las funcionalidades de comprador. Interactua con <code>Expendedor</code>.
+ * @see Expendedor
+ */
 public class Comprador {
     private String sabor;
     private int vuelto;
