@@ -2,7 +2,7 @@ package org.example;
 import java.util.ArrayList;
 
 public class Deposito<T> {
-    private ArrayList<T> array;
+    private final ArrayList<T> array;
     public Deposito() {
         this.array = new ArrayList<>();
     }

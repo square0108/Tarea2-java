@@ -20,7 +20,7 @@ public class Comprador {
 
         try{
             Producto miCompra = expendedor.comprarProducto(producto, moneda);
-            sabor = miCompra.consumir(); // NO estoy seguro de que así se obtenga el "sabor"
+            sabor = miCompra.consumir();
 
             // Quitar el vuelto del deposito monVu, hasta que quede vacio
             Moneda monedavuelto = expendedor.getVuelto();
@@ -30,7 +30,6 @@ public class Comprador {
             }
 
         } catch(PagoIncorrectoException e){
-            // TODO: Aqui supongo que falta poner cosas
             throw e;
         } catch(NoHayProductoException | PagoInsuficienteException e) {
             /*Sabemos que en caso de que no haya producto o el pago sea insuficiente, entonces solo habra una

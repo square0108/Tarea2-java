@@ -1,3 +1,5 @@
+package java.testsMain;
+
 import org.example.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -15,38 +17,46 @@ class ExpendedorTest {
         assertNotNull(new Expendedor(2));
         assertNotNull(new Expendedor(0));
         assertNotNull(new Expendedor(-10));
+        assertNull(new Expendedor(0).getCoca().get());
+        assertNotNull(new Expendedor(1).getSnickers().get());
     }
 
     @Test
     @DisplayName("Compras Exitosas")
     void comprasExitosas() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
-        /*Nose como poder utilizar el enum catalogo aquí dentro*/
         Expendedor expendedor = new Expendedor(10);
-        assertNotNull(expendedor.comprarProducto(0,new Moneda100()));
-        assertNotNull(expendedor.comprarProducto(1,new Moneda500()));
-        assertNotNull(expendedor.comprarProducto(2,new Moneda1000()));
-        assertNotNull(expendedor.comprarProducto(3,new Moneda1500()));
-        assertNotNull(expendedor.comprarProducto(4,new Moneda1500()));
+        assertNotNull(expendedor.comprarProducto(Catalogo.COCA.id,new Moneda100()));
+        assertNotNull(expendedor.comprarProducto(Catalogo.SPRITE.id,new Moneda500()));
+        assertNotNull(expendedor.comprarProducto(Catalogo.FANTA.id,new Moneda1000()));
+        assertNotNull(expendedor.comprarProducto(Catalogo.SNICKERS.id,new Moneda1500()));
+        assertNotNull(expendedor.comprarProducto(Catalogo.SUPER8.id,new Moneda1500()));
     }
 
     @Test
-    @DisplayName("Comprar: Caso No Hay Producto")
+    @DisplayName("Comprar: Caso No Hay Producto (stock agotado)")
     void noHayProducto() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
-        /*Nose como poder utilizar el enum catalogo aquí dentro*/
         Expendedor expendedor = new Expendedor(1);
         assertThrows(NoHayProductoException.class, () -> {
-            expendedor.comprarProducto(1,new Moneda1500());
-            expendedor.comprarProducto(1,new Moneda1500());
+            expendedor.comprarProducto(Catalogo.SPRITE.id,new Moneda1500());
+            expendedor.comprarProducto(Catalogo.SPRITE.id,new Moneda1500());
+        });
+    }
+
+    @Test
+    @DisplayName("Comprar: Caso No Hay Producto (ID no existe)")
+    void idNoExiste() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
+        Expendedor expendedor = new Expendedor(1);
+        assertThrows(NoHayProductoException.class, () -> {
+            expendedor.comprarProducto(1337, new Moneda100());
         });
     }
 
     @Test
     @DisplayName("Comprar: Caso Pago Insuficiente")
     void pagoInsuficiente() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
-        /*Nose como poder utilizar el enum catalogo aquí dentro*/
         Expendedor expendedor = new Expendedor(10);
         assertThrows(PagoInsuficienteException.class, () -> {
-            expendedor.comprarProducto(3,new Moneda100());
+            expendedor.comprarProducto(Catalogo.SNICKERS.id,new Moneda100());
         });
     }
 

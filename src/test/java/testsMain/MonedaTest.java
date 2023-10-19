@@ -1,3 +1,5 @@
+package java.testsMain;
+
 import org.example.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -18,29 +20,29 @@ class MonedaTest {
     @Test
     @DisplayName("Monedas con el mismo valor")
     void monedasDelMismoValor() {
-        assertEquals(new Moneda100().getValor(), new Moneda100().getValor());
-        assertEquals(new Moneda500().getValor(), new Moneda500().getValor());
-        assertEquals(new Moneda1500().getValor(), new Moneda1500().getValor());
-        assertEquals(new Moneda1000().getValor(), new Moneda1000().getValor());
+        assertEquals(0, new Moneda100().compareTo(new Moneda100()));
+        assertEquals(0, new Moneda500().compareTo(new Moneda500()));
+        assertEquals(0, new Moneda1000().compareTo(new Moneda1000()));
+        assertEquals(0, new Moneda1500().compareTo(new Moneda1500()));
     }
     @Test
     @DisplayName("Monedas con distinto valor")
     void monedasDeDistintoValor() {
-        assertNotEquals(new Moneda100().getValor(), new Moneda500().getValor());
-        assertNotEquals(new Moneda100().getValor(), new Moneda1000().getValor());
-        assertNotEquals(new Moneda100().getValor(), new Moneda1500().getValor());
+        assertEquals(-1, new Moneda100().compareTo(new Moneda500()));
+        assertEquals(-1, new Moneda100().compareTo(new Moneda1000()));
+        assertEquals(-1, new Moneda100().compareTo(new Moneda1500()));
 
-        assertNotEquals(new Moneda500().getValor(), new Moneda100().getValor());
-        assertNotEquals(new Moneda500().getValor(), new Moneda1000().getValor());
-        assertNotEquals(new Moneda500().getValor(), new Moneda1500().getValor());
+        assertEquals(1, new Moneda500().compareTo(new Moneda100()));
+        assertEquals(-1, new Moneda500().compareTo(new Moneda1000()));
+        assertEquals(-1, new Moneda500().compareTo(new Moneda1500()));
 
-        assertNotEquals(new Moneda1000().getValor(), new Moneda500().getValor());
-        assertNotEquals(new Moneda1000().getValor(), new Moneda100().getValor());
-        assertNotEquals(new Moneda1000().getValor(), new Moneda1500().getValor());
+        assertEquals(1, new Moneda1000().compareTo(new Moneda100()));
+        assertEquals(1, new Moneda1000().compareTo(new Moneda500()));
+        assertEquals(-1, new Moneda1000().compareTo(new Moneda1500()));
 
-        assertNotEquals(new Moneda1500().getValor(), new Moneda500().getValor());
-        assertNotEquals(new Moneda1500().getValor(), new Moneda1000().getValor());
-        assertNotEquals(new Moneda1500().getValor(), new Moneda100().getValor());
+        assertEquals(1, new Moneda1500().compareTo(new Moneda100()));
+        assertEquals(1, new Moneda1500().compareTo(new Moneda500()));
+        assertEquals(1, new Moneda1500().compareTo(new Moneda1000()));
     }
     @Test
     @DisplayName("Metodo getSerie devuelve Referencia")

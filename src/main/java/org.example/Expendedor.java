@@ -38,7 +38,7 @@ public class Expendedor {
 
     /**
      * Emula la acción de comprar en el Expendedor. Utilizado unicamente por el constructor de Comprador.
-     * @param ID int, Identificador de Producto.
+     * @param ID int, Identificador de Producto. Ver Catalogo para determinar los posibles IDs.
      * @param moneda Moneda usada por Comprador.
      * @return Si el producto es comprado de forma exitosa, la referencia del producto. En otro caso null.
      * @throws NoHayProductoException Ocurre en caso de stock agotado o de que se ingrese un ID de producto invalido.
@@ -55,8 +55,9 @@ public class Expendedor {
         /* Se recorre el array Main.Catalogo.values(), que contiene todas las constantes de Catalogo, las cuales almacenan los IDs y los precios. */
         for (int i = 0; i < Catalogo.values().length; i++) {
             if (Catalogo.values()[i].id == ID) { /* Chequea: ID es valido? */
-                if (moneda.getValor() >= Catalogo.values()[i].precio)
-                    Compra = Catalogo.values()[i]; /* Chequea: El pago es suficiente? */
+                if (moneda.getValor() >= Catalogo.values()[i].precio) { /* Chequea: El pago es suficiente? */
+                    Compra = Catalogo.values()[i];
+            }
                 else {
                     throw new PagoInsuficienteException(this, moneda);
                 }
