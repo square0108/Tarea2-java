@@ -67,6 +67,34 @@ public class Expendedor {
         /* Si Compra permanece inicializada como NULL, entonces el ID ingresado no es valido. */
         if (Compra == null) throw new NoHayProductoException(this, moneda);
 
+        /* Primero se crea ProductoComprado.
+        * Si al hacer get() desde un deposito se le asigna null a ProductoComprado, es porque este deposito ha quedado vacio. */
+        Producto ProductoComprado;
+        switch (Compra) {
+            case COCA:
+                ProductoComprado = coca.get();
+                if (ProductoComprado == null) throw new NoHayProductoException(this, moneda);
+                break;
+            case SPRITE:
+                ProductoComprado = sprite.get();
+                if (ProductoComprado == null) throw new NoHayProductoException(this, moneda);
+                break;
+            case FANTA:
+                ProductoComprado = fanta.get();
+                if (ProductoComprado == null) throw new NoHayProductoException(this, moneda);
+                break;
+            case SNICKERS:
+                ProductoComprado = snickers.get();
+                if (ProductoComprado == null) throw new NoHayProductoException(this, moneda);
+                break;
+            case SUPER8:
+                ProductoComprado = super8.get();
+                if (ProductoComprado == null) throw new NoHayProductoException(this, moneda);
+                break;
+            default:
+                return null;
+        }
+
         // GLLRM: Generar monedas segun monto de vuelto y añadirlas al deposito de vuelto
         int montovuelto = moneda.getValor() - Compra.precio;
         while( montovuelto > 0 ){
@@ -75,33 +103,7 @@ public class Expendedor {
             monVu.add(moneda100);
         }
 
-        /* Primero se crea ProductoComprado.
-        * Si al hacer get() desde un deposito se le asigna null a ProductoComprado, es porque este deposito ha quedado vacio. */
-        Producto ProductoComprado;
-        switch (Compra) {
-            case COCA:
-                ProductoComprado = coca.get();
-                if (ProductoComprado == null) throw new NoHayProductoException(this, moneda);
-                else return ProductoComprado;
-            case SPRITE:
-                ProductoComprado = sprite.get();
-                if (ProductoComprado == null) throw new NoHayProductoException(this, moneda);
-                else return ProductoComprado;
-            case FANTA:
-                ProductoComprado = fanta.get();
-                if (ProductoComprado == null) throw new NoHayProductoException(this, moneda);
-                else return ProductoComprado;
-            case SNICKERS:
-                ProductoComprado = snickers.get();
-                if (ProductoComprado == null) throw new NoHayProductoException(this, moneda);
-                else return ProductoComprado;
-            case SUPER8:
-                ProductoComprado = super8.get();
-                if (ProductoComprado == null) throw new NoHayProductoException(this, moneda);
-                else return ProductoComprado;
-            default:
-                return null;
-        }
+        return ProductoComprado;
     }
 
     /**
