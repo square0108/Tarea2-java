@@ -33,7 +33,7 @@ public class Main {
             System.err.println("Error. La moneda ingresada no es valida.");
         }
         catch (NoHayProductoException e) {
-            System.err.println("Error. No hay stock o el producto ingresado no existe. Retire su vuelto desde la maquina.");
+            System.err.println("Error. No hay stock o el producto ingresado no existe.");
         }
         catch (PagoInsuficienteException e) {
             System.err.println("Error. El monto ingresado es insuficiente para pagar este producto. ");

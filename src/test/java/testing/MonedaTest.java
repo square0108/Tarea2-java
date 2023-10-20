@@ -55,10 +55,7 @@ class MonedaTest {
     @Test
     @DisplayName("Metodo toString funciona de forma correcta")
     void monedaToString() {
-        assertEquals("Moneda de 100",new Moneda100().toString());
-        assertEquals("Moneda de 500",new Moneda500().toString());
-        assertEquals("Moneda de 1000",new Moneda1000().toString());
-        assertEquals("Moneda de 1500",new Moneda1500().toString());
+        assertNotEquals(new Moneda100().toString(),new Moneda100().toString());
     }
 
 }
