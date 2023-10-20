@@ -1,4 +1,4 @@
-package org.testing;
+package testing;
 
 import org.example.*;
 import org.junit.jupiter.api.DisplayName;
@@ -27,7 +27,7 @@ class CompradorTest {
     @Test
     @DisplayName("Placeholder")
     void CompradorExpVacio() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
-        AtomicReference<Comprador> Epep = null;
+        AtomicReference<Comprador> Epep = new AtomicReference<>();
         assertThrows(NoHayProductoException.class, () -> {
             Epep.set(new Comprador(expEmpty, Catalogo.FANTA.id, new Moneda500()));
         });
