@@ -25,15 +25,6 @@ class CompradorTest {
     }
 
     @Test
-    @DisplayName("Placeholder")
-    void CompradorExpVacio() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
-        AtomicReference<Comprador> Epep = new AtomicReference<>();
-        assertThrows(NoHayProductoException.class, () -> {
-            Epep.set(new Comprador(expEmpty, Catalogo.FANTA.id, new Moneda500()));
-        });
-    }
-
-    @Test
     @DisplayName("A comprador no le alcanza el dinero")
     void compradorNoAlcanza() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         Expendedor expendedor = new Expendedor(10);

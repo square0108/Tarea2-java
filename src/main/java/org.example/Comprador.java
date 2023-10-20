@@ -13,9 +13,9 @@ public class Comprador {
      * @param expendedor Expendedor donde se comprara el producto.
      * @param producto ID del producto a comprar.
      * @param moneda Moneda con la que se comprara el producto.
-     * @throws NoHayProductoException Ocurre en caso de stock agotado o de que se ingrese un ID de producto invalido.
-     * @throws PagoIncorrectoException Ocurre en caso de que se intente realizar un pago con moneda de referencia null.
-     * @throws PagoInsuficienteException Ocurre en caso de que el valor de la moneda ingresada sea menor al precio del producto.
+     * @throws NoHayProductoException Ocurre en caso de stock agotado o de que se ingrese un ID de producto invalido. Se devuelve el vuelto, y el Comprador lo "recoge" automaticamente desde la maquina.
+     * @throws PagoIncorrectoException Ocurre en caso de que se intente realizar un pago con moneda de referencia null. No devuelve ningun vuelto.
+     * @throws PagoInsuficienteException Ocurre en caso de que el valor de la moneda ingresada sea menor al precio del producto. Se devuelve el vuelto, y el Comprador lo "recoge" automaticamente desde la maquina.
      */
     public Comprador(Expendedor expendedor, int producto, Moneda moneda) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         this.vuelto = 0;
@@ -32,7 +32,8 @@ public class Comprador {
                 monedavuelto = expendedor.getVuelto();
             }
 
-        } catch(PagoIncorrectoException e){
+        }
+        catch(PagoIncorrectoException e){
             throw e;
         } catch(NoHayProductoException | PagoInsuficienteException e) {
             /*Sabemos que en caso de que no haya producto o el pago sea insuficiente, entonces solo habra una

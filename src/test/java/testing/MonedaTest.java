@@ -55,7 +55,10 @@ class MonedaTest {
     @Test
     @DisplayName("Metodo toString funciona de forma correcta")
     void monedaToString() {
-        assertNotEquals(new Moneda100().toString(),new Moneda100().toString());
+        Moneda100 A = new Moneda100();
+        String SerieA = A.getSerie();
+        assertEquals("Valor: 100, Serie: " + SerieA,A.toString());
+        assertNotEquals(SerieA,new Moneda100().toString()); // entregan numeros de serie distintos
     }
 
 }
